@@ -1,3 +1,6 @@
+## Load required packages
+library(reshape2)
+
 ## Open Testing Set
 X_test <- read.table("test/X_test.txt")
 
