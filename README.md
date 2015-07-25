@@ -10,4 +10,14 @@ Download run_analysis.R into the folder containing the UCI HAR dataset and set t
 ## Running the script
 Source run_analysis.R into console
 
-A data frame, X_features_mean will be created in your Global Environment which is a tidy data set with the average of each variable on the mean and standard deviation for each measurement (Yo Dawg!) for each activity and each subject in the training and testing data sets (more on this below).
+A data frame, X_features_mean will be created in your Global Environment which is a tidy data set with the average of each variable on the mean and standard deviation for each measurement (Yo Dawg!) for each activity and each subject in the training and testing data sets.
+
+## What do the column names mean?
+Check out CodeBook.md for variable description and procedure of how they were obtained.
+
+## How exactly was the tidy data set obtained?
+Here were the rough steps that were followed:
+
+1. Training and testing data sets were combined into a single data frame.
+2. The data frame was arranged according to subject and the activities performed. Each subject performed all 6 activities once.
+3. 
