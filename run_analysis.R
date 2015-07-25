@@ -45,5 +45,5 @@ X_melted <- melt(X_with_activity, id = c("Subject", "Activity"), measure.vars = 
 ## dcast taking mean of the features
 X_features_mean <- dcast(X_melted, Subject+Activity ~ variable, mean)
 
-## Return long-form tidy data frame of feature means
+## Return wide-form tidy data frame of feature means
 X_features_mean
