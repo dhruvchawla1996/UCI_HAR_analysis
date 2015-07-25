@@ -19,5 +19,6 @@ Check out CodeBook.md for variable description and procedure of how they were ob
 Here were the rough steps that were followed:
 
 1. Training and testing data sets were combined into a single data frame.
-2. The data frame was arranged according to subject and the activities performed. Each subject performed all 6 activities once.
-3. 
+2. Extracted columns that stored measurements on mean and standard deviation for each measurement (this includes measurements on meanFreq and angle function).
+3. The data frame was arranged according to subject and the activities performed. Each subject performed all 6 activities once.
+4. The average of each variable was calculated for each activity performed by each subject.
