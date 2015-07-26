@@ -33,7 +33,7 @@ features <- read.table("features.txt")
 names(X) <- as.character(features[[2]])
 
 ## Select variables of X representing mean and standard deviation of features
-X_mean_std <- X[,c(1:6, 41:46, 81:86, 121:126, 161:166, 201, 202, 214, 215, 227, 228, 240, 241, 253, 254, 266:271, 294:296, 345:350, 373:375, 424:429, 452:454, 503, 504, 513, 516, 517, 526, 529, 530, 539, 542, 543, 552, 555:561)]
+X <- X[,c(1:6, 41:46, 81:86, 121:126, 161:166, 201, 202, 214, 215, 227, 228, 240, 241, 253, 254, 266:271, 294:296, 345:350, 373:375, 424:429, 452:454, 503, 504, 513, 516, 517, 526, 529, 530, 539, 542, 543, 552, 555:561)]
 
 ## Get the list of subjects
 subject_test <- read.table("test/subject_test.txt")
@@ -42,15 +42,27 @@ subject <- rbind(subject_test, subject_train)
 names(subject) <- c("Subject")
 
 ## Add activities and subjects to X
-X_with_activity <- cbind(subject, y, X_mean_std)
+X <- cbind(subject, y, X)
 
 ## Melt the data frame X
-X_melted <- melt(X_with_activity, id = c("Subject", "Activity"), measure.vars = colnames(X_with_activity[,3:88]))
+X <- melt(X, id = c("Subject", "Activity"), measure.vars = colnames(X[,3:88]))
 
 ## dcast taking mean of the features
-X_features_mean_wide <- dcast(X_melted, Subject+Activity ~ variable, mean)
+X_features_mean_wide <- dcast(X, Subject+Activity ~ variable, mean)
 
-##Convert data to narrow form for readability
+## Convert data to narrow form for readability
 X_features_mean_narrow <- melt(X_features_mean_wide, id = c("Subject", "Activity"), measure.vars = colnames(X_features_mean_wide[,3:88]))
 names(X_features_mean_narrow) <- c("Subject", "Activity", "Features", "Mean")
 X_features_mean_narrow <- arrange(X_features_mean_narrow, Subject, Activity)
+
+## Remove unnecessary global variables
+rm("features")
+rm("subject")
+rm("subject_test")
+rm("subject_train")
+rm("X")
+rm("X_test")
+rm("X_train")
+rm("y")
+rm("y_test")
+rm("y_train")
