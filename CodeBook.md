@@ -1,8 +1,8 @@
 # Code Book
-## Narrow and Wide data sets
-There are two data sets generated after running run_analysis.r, in the global enironment. Their names are ````X_features_mean_narrow```` and ````X_features_mean_wide````. They both represent the same data but are in different shapes (narrow and wide according to their names).
+## Narrow and Wide data frames
+There are two data frames generated after running run_analysis.r, in the global enironment. Their names are ````X_features_mean_narrow```` and ````X_features_mean_wide````. They both represent the same data but are in different shapes (narrow and wide according to their names).
 
-Both the data sets have the first two columns (Subject and Activity) in common.
+Both the data frames have the first two columns (Subject and Activity) in common.
 
 ## Subject and Activity columns
 Subject is a numeric column containing the IDs of the test and training subjects, which go from 1 to 30. These were extracted from ````test/subject_test.txt```` and ````train/subject_train.txt````. These were matched to their respective observations in the data frame.
