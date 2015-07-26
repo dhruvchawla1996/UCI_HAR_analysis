@@ -55,6 +55,9 @@ X_features_mean_narrow <- melt(X_features_mean_wide, id = c("Subject", "Activity
 names(X_features_mean_narrow) <- c("Subject", "Activity", "Features", "Mean")
 X_features_mean_narrow <- arrange(X_features_mean_narrow, Subject, Activity)
 
+## Write narrow form data into a text file
+write.table(X_features_mean_narrow, file = "X_average.txt", row.names = FALSE)
+
 ## Remove unnecessary global variables
 rm("features")
 rm("subject")
