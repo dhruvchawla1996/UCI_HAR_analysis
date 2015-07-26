@@ -1,5 +1,7 @@
 ## Load required packages
 library(reshape2)
+library(plyr)
+library(dplyr)
 
 ## Open Testing Set
 X_test <- read.table("test/X_test.txt")
@@ -46,7 +48,9 @@ X_with_activity <- cbind(subject, y, X_mean_std)
 X_melted <- melt(X_with_activity, id = c("Subject", "Activity"), measure.vars = colnames(X_with_activity[,3:88]))
 
 ## dcast taking mean of the features
-X_features_mean <- dcast(X_melted, Subject+Activity ~ variable, mean)
+X_features_mean_wide <- dcast(X_melted, Subject+Activity ~ variable, mean)
 
-## Return wide-form tidy data frame of feature means
-X_features_mean
+##Convert data to narrow form for readability
+X_features_mean_narrow <- melt(X_features_mean_wide, id = c("Subject", "Activity"), measure.vars = colnames(X_features_mean_wide[,3:88]))
+names(X_features_mean_narrow) <- c("Subject", "Activity", "Features", "Mean")
+X_features_mean_narrow <- arrange(X_features_mean_narrow, Subject, Activity)
