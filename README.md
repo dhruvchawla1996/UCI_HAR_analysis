@@ -8,7 +8,7 @@ A full description of this data is available at [this website.](http://archive.i
 Download run_analysis.R into the folder containing the UCI HAR dataset and set the folder as your working directory in R.
 
 ## Running the script
-__Check that reshape2 package is installed.__
+__Check that reshape2, plyr and dplyr packages are installed.__
 
 Source run_analysis.R into console.
 
